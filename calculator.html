@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+</head>
+<style type="text/css">
+	table input[type=button] {
+		width: 32px;
+	}
+</style>
+<body>
+<input type="text" id="result" value="0" style="margin:0 7px; width: 160px; text-align: right;" disabled=""><br><input style="margin:5px 7px; width: 165px" type="button" onclick="resultClear()" value="C">
+<table cellpadding="5">
+	<tr>
+		<td><input type="button" onclick="add(1)" id="sayi" value="1"></td>
+		<td><input type="button" onclick="add(2)" id="sayi" value="2"></td>
+		<td><input type="button" onclick="add(3)" id="sayi" value="3"></td>
+		<td><input type="button" onclick="topla()" value="+"></td>
+	</tr>
+	<tr>
+		<td><input type="button" onclick="add(4)" id="sayi" value="4"></td>
+		<td><input type="button" onclick="add(5)" id="sayi" value="5"></td>
+		<td><input type="button" onclick="add(6)" id="sayi" value="6"></td>
+		<td><input onclick="cikar()" type="button" value="-"></td>
+	</tr>
+	<tr>
+		<td><input type="button" onclick="add(7)" id="sayi" value="7"></td>
+		<td><input type="button" onclick="add(8)" id="sayi" value="8"></td>
+		<td><input type="button" onclick="add(9)" id="sayi" value="9"></td>
+		<td><input onclick="carp()" type="button" value="*"></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="button" id="sayi" onclick="add(0)" value="0"></td>
+		<td></td>
+		<td><input onclick="bol()" type="button" value="/"></td>
+	</tr>
+	<tr><td><input onclick="esit()" type="button" value="=" style="width: 165px; position: absolute;"></td></tr>
+
+</table>
+<script type="text/javascript">
+var result = document.getElementById("result");
+var query, firstVal;
+function add(val) {
+	if(result.value == 0)
+		result.value = val;
+	else
+	result.value += val;
+}
+function resultClear() {
+	result.value = 0;
+}
+function topla() {
+	firstVal = result.value;
+	query = 1;
+	resultClear();
+}
+function cikar() {
+	firstVal = result.value;
+	query = 2;
+	resultClear();
+}
+function carp() {
+	firstVal = result.value;
+	query = 3;
+	resultClear();
+}
+function bol() {
+	firstVal = result.value;
+	query = 4;
+	resultClear();
+}
+
+function esit() {
+	var deger = result.value;
+	if(query == 1)
+		result.value = parseInt(firstVal) + parseInt(deger);
+	else if(query == 2)
+		result.value = parseInt(firstVal) - parseInt(deger);
+	else if(query == 3)
+		result.value = parseInt(firstVal) * parseInt(deger);
+	else if(query == 4)
+		result.value = parseInt(firstVal) / parseInt(deger);
+}
+
+</script>
+</body>
+</html>
